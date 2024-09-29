@@ -2,11 +2,12 @@ FROM node:latest
 
 WORKDIR /home/choreouser
 
-EXPOSE 3000
+EXPOSE 5000
 
 COPY files/* /home/choreouser/
 
 RUN apt-get update &&\
+    apt purge libaom* -y &&\
     apt install --only-upgrade linux-libc-dev &&\
     apt-get install -y iproute2 vim netcat-openbsd &&\
     addgroup --gid 10008 choreo &&\
